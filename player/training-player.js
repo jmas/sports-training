@@ -181,6 +181,14 @@ customElements.define(
         true
       );
 
+      controls.addEventListener(
+        "fullscreen",
+        () => {
+          this._toggleFullScreen();
+        },
+        true
+      );
+
       progress.addEventListener(
         "select",
         (event) => {
