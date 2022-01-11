@@ -430,6 +430,7 @@ customElements.define(
 
     _playTick = () => {
       this._tick.currentTime = 0;
+      this._tick.autoplay = true;
       this._tick.play();
     };
 
@@ -444,7 +445,6 @@ customElements.define(
     };
 
     _stopSounds = () => {
-      this._tick.autoplay = true;
       this._tick.pause();
       this._bell.pause();
     };
