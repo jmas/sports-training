@@ -210,6 +210,8 @@ customElements.define(
       );
 
       document.addEventListener("keypress", this._onKeyPress, false);
+
+      this._addEventListenerForLoadSound();
     }
 
     disconnectedCallback() {
@@ -473,6 +475,20 @@ customElements.define(
         this._toggleFullScreen();
       }
     };
+
+    _addEventListenerForLoadSound() {
+      document.body.addEventListener("touchstart", () => {
+        this._tick = new Audio("tick.mp3");
+        this._tick.load();
+        this._tick.volume = 0;
+        this._tick.play();
+
+        this._bell = new Audio("boxing-bell.mp3");
+        this._bell.load();
+        this._bell.volume = 0;
+        this._bell.play();
+      });
+    }
 
     get exercises() {
       return JSON.parse(this.getAttribute("exercises") || "") || [];
