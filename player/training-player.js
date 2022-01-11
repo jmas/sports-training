@@ -12,6 +12,10 @@ customElements.define(
           box-sizing: border-box;
         }
 
+        .container {
+          display: grid;
+        }
+
         .player {
           position: relative;
         }
@@ -99,35 +103,37 @@ customElements.define(
           }
         }
         </style>
-        <div id="player" class="player hide">
-          <training-video id="video"></training-video>
+        <div class="container">
+          <div id="player" class="player hide">
+            <training-video id="video"></training-video>
 
-          <div id="title" class="title"></div>
+            <div id="title" class="title"></div>
 
-          <div id="break" class="break hide"><span></span></div>
+            <div id="break" class="break hide"><span></span></div>
 
-          <training-timer
-            id="timer"
-            class="timer"
-            max="0"
-            value="0"
-          ></training-timer>
+            <training-timer
+              id="timer"
+              class="timer"
+              max="0"
+              value="0"
+            ></training-timer>
 
-          <training-progress
-            id="progress"
-            items="[]"
-            active="0"
-            class="progress"
-          ></training-progress>
+            <training-progress
+              id="progress"
+              items="[]"
+              active="0"
+              class="progress"
+            ></training-progress>
+          </div>
+
+          <training-controls
+            id="controls"
+            title=""
+            completion="0"
+          ></training-controls>
+
+          <training-list id="list" items="[]"></training-list>
         </div>
-
-        <training-controls
-          id="controls"
-          title=""
-          completion="0"
-        ></training-controls>
-
-        <training-list id="list" items="[]"></training-list>
       `;
 
       this._tick = new Audio("tick.mp3");
