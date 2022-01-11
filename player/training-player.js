@@ -144,6 +144,7 @@ customElements.define(
         this._exerciseBreak,
         this._setBreak
       );
+      this._soundsInit = false;
     }
 
     static get observedAttributes() {
@@ -478,15 +479,16 @@ customElements.define(
 
     _addEventListenerForLoadSound() {
       document.body.addEventListener("touchstart", () => {
-        this._tick.load();
-        // this._tick.volume = 0;
-        this._tick.play();
-        this._tick.pause();
+        if (!this._soundsInit) {
+          this._tick.load();
+          this._tick.play();
+          this._tick.pause();
 
-        this._bell.load();
-        // this._bell.volume = 0;
-        this._bell.play();
-        this._bell.pause();
+          this._bell.load();
+          this._bell.play();
+          this._bell.pause();
+          this._soundsInit = true;
+        }
       });
     }
 
