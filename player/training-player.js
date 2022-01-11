@@ -439,10 +439,12 @@ customElements.define(
 
     _playBell = () => {
       this._bell.currentTime = 0;
+      this._bell.autoplay = true;
       this._bell.play();
     };
 
     _stopSounds = () => {
+      this._tick.autoplay = true;
       this._tick.pause();
       this._bell.pause();
     };
