@@ -77,15 +77,19 @@ customElements.define(
       };
 
       const onPlayerStateChange = (event) => {
-        if (event.data == YT.PlayerState.PLAYING) {
+        console.log(event.data, YT.PlayerState);
+        if (event.data === YT.PlayerState.PLAYING) {
           const duration = this.end - this.start;
           clearTimeout(this._restartTimer);
           this._restartTimer = setTimeout(
             this._restartVideoSection,
             duration * 1000
           );
-        } else if (event.data == YT.PlayerState.PAUSED) {
+        } else if (event.data === YT.PlayerState.PAUSED) {
           clearTimeout(this._restartTimer);
+        } else if (event.data === YT.PlayerState.ENDED) {
+          clearTimeout(this._restartTimer);
+          onPlayerReady();
         }
       };
 
