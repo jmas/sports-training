@@ -11,22 +11,21 @@ const formatTableData = ([header, body]) => {
   });
 };
 
-const fetchTrainings = (url) => {
+const fetchTable = (url, table) => {
   const newUrl = new URL(url);
   newUrl.searchParams.set("action", "getTable");
-  newUrl.searchParams.set("table", "trainings");
+  newUrl.searchParams.set("table", table);
   return fetch(newUrl.toString())
     .then((response) => response.json())
     .then(formatTableData);
 };
 
+const fetchTrainings = (url) => {
+  return fetchTable(url, "trainings");
+};
+
 const fetchExercises = (url) => {
-  const newUrl = new URL(url);
-  newUrl.searchParams.set("action", "getTable");
-  newUrl.searchParams.set("table", "exercises");
-  return fetch(newUrl.toString())
-    .then((response) => response.json())
-    .then(formatTableData);
+  return fetchTable(url, "exercises");
 };
 
 const renderTrainings = ([trainings, exercises]) => {
