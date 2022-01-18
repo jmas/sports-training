@@ -77,7 +77,6 @@ customElements.define(
       };
 
       const onPlayerStateChange = (event) => {
-        console.log(event.data, YT.PlayerState);
         if (event.data === YT.PlayerState.PLAYING) {
           const duration = this.end - this.start;
           clearTimeout(this._restartTimer);
