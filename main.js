@@ -62,11 +62,11 @@ const renderTrainings = ([trainings, exercises]) => {
 
 const renderError = (error) => {
   console.error(error);
-  document.getElementById("trainings").innerHTML = "Произошла ошибка.";
+  document.getElementById("trainings").textContent = "Произошла ошибка.";
 };
 
 const renderLoading = () => {
-  document.getElementById("trainings").innerHTML = "Загрузка&hellip;";
+  document.getElementById("trainings").textContent = "Загрузка...";
 };
 
 const readFromCache = (key) => {
@@ -116,7 +116,7 @@ const main = () => {
   queryOrGetFromCache(
     "trainings_exercises_cache",
     () => Promise.all([fetchTrainings(apiUrl), fetchExercises(apiUrl)]),
-    3600 * 12 // 12 hours
+    12 * 3600 // 12 hours
   )
     .then(renderTrainings)
     .catch(renderError);

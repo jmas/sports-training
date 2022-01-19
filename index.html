@@ -22,7 +22,7 @@
     </script>
   </head>
   <body
-    data-api="https://script.google.com/macros/s/AKfycbz1FgV_mGgBb4i3Z1gdsdPd6TYZPrlvvzH1fP61b7yxhT8gXjbPcfnhzUcf8zIxCZCjoQ/exec?action=getTable&table=excercises"
+    data-api="https://script.google.com/macros/s/AKfycbz1FgV_mGgBb4i3Z1gdsdPd6TYZPrlvvzH1fP61b7yxhT8gXjbPcfnhzUcf8zIxCZCjoQ/exec"
   >
     <div class="container">
       <h1>Спортивные тренировки</h1>
@@ -48,34 +48,30 @@
 
       <h2>Утренние короткие зарядки</h2>
 
-      <div class="video-list">
-        <a href="https://www.youtube.com/watch?v=SjJs4VhvMy0" target="_blank">
+      <template id="short-trainings-item">
+        <a
+          data-insert-href="https://www.youtube.com/watch?v=${videoId}"
+          target="_blank"
+        >
           <img
-            src="https://img.youtube.com/vi/SjJs4VhvMy0/0.jpg"
-            alt="Утренняя зарядка | Комплекс упражнений в домашних условиях. Фитнес дома"
+            data-insert-src="https://img.youtube.com/vi/${videoId}/0.jpg"
+            data-insert-alt="${name}"
           />
-          <span>Утренняя зарядка 6 минут от IMAGINE fitness</span>
+          <span data-insert="${name}"></span>
         </a>
-        <a href="https://www.youtube.com/watch?v=4M_1Lbk1-Eg" target="_blank">
-          <img
-            src="https://img.youtube.com/vi/4M_1Lbk1-Eg/0.jpg"
-            alt="фитнес-зарядка от клуба Зебра 16 10 2016"
-          />
-          <span>Фитнес-зарядка 15 минут от клуба Зебра</span>
-        </a>
-        <a href="https://www.youtube.com/watch?v=-tJ7rbJyGQ4" target="_blank">
-          <img
-            src="https://img.youtube.com/vi/-tJ7rbJyGQ4/0.jpg"
-            alt="5-минутная тренировка для детей в домашних условиях | Возраст 3-5 лет | KHOMYTSKYI PRO"
-          />
-          <span
-            >5-минутная тренировка для детей в домашних условиях для детей 3-5
-            лет от KHOMYTSKYI PRO</span
-          >
-        </a>
-      </div>
+      </template>
+
+      <gsh-list
+        document-id="1PZ33mOE0Td0t88-8ak8OZ4-CxPDZbhTJfak3VbbvFG0"
+        sheet="short_trainings"
+        item-template="#short-trainings-item"
+        render-into="#video-list"
+      >
+        <div class="video-list" id="video-list"></div>
+      </gsh-list>
     </div>
 
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
+    <script src="gsh/gsh-list.js" defer></script>
   </body>
 </html>
