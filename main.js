@@ -79,7 +79,7 @@ const readFromCache = (key) => {
   if (new Date().getTime() < expire) {
     return value;
   } else {
-    localStorage[key] = "";
+    localStorage.removeItem(key);
   }
   return null;
 };
