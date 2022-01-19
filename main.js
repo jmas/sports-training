@@ -61,6 +61,7 @@ const renderTrainings = ([trainings, exercises]) => {
 };
 
 const renderError = (error) => {
+  console.error(error);
   document.getElementById("trainings").innerHTML = "Произошла ошибка.";
 };
 
@@ -68,12 +69,55 @@ const renderLoading = () => {
   document.getElementById("trainings").innerHTML = "Загрузка&hellip;";
 };
 
+const readFromCache = (key) => {
+  const { value, expire } = JSON.parse(
+    localStorage[key] || '{ "value": null, "expire": null }'
+  );
+  if (!expire) {
+    return null;
+  }
+  if (new Date().getTime() < expire) {
+    return value;
+  } else {
+    localStorage[key] = "";
+  }
+  return null;
+};
+
+const writeToCache = (key, value, ttl = 3600) => {
+  localStorage[key] = JSON.stringify({
+    value,
+    expire: new Date().getTime() + ttl * 1000,
+  });
+  return value;
+};
+
+const queryOrGetFromCache = (key, queryFn, ttl = 3600) => {
+  return new Promise((resolve) => {
+    const cached = readFromCache(key);
+    if (cached) {
+      resolve(cached);
+    } else {
+      Promise.resolve(queryFn())
+        .then((value) => {
+          writeToCache(key, value, ttl);
+          return value;
+        })
+        .then(resolve);
+    }
+  });
+};
+
 const main = () => {
   const apiUrl = getApiUrl();
 
   renderLoading();
 
-  Promise.all([fetchTrainings(apiUrl), fetchExercises(apiUrl)])
+  queryOrGetFromCache(
+    "trainings_exercises_cache",
+    () => Promise.all([fetchTrainings(apiUrl), fetchExercises(apiUrl)]),
+    3600 * 12 // 12 hours
+  )
     .then(renderTrainings)
     .catch(renderError);
 };

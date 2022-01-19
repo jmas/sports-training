@@ -81,7 +81,13 @@ details[open] > summary:before {
 .video-list {
   display: grid;
   gap: 1rem;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 641px) {
+  .video-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .video-list img {
