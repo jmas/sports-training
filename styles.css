@@ -44,6 +44,7 @@ details {
   border-radius: 0.5rem;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.5);
+  user-select: none;
 }
 
 summary {
