@@ -9,20 +9,31 @@ customElements.define(
       return ["document-id", "sheet", "item-template"];
     }
 
+    get cacheTtl() {
+      return Number(this.getAttribute("cache-ttl")) || 12 * 3600; // default: 12 hours
+    }
+
     connectedCallback() {
       this._fetchAndRender(
         this.getAttribute("document-id"),
         this.getAttribute("sheet"),
         this.getAttribute("item-template"),
-        this.getAttribute("render-into")
+        this.getAttribute("render-into"),
+        this.cacheTtl
       );
     }
 
-    _fetchAndRender = (documentId, sheet, itemTemplate, renderInto) => {
+    _fetchAndRender = (
+      documentId,
+      sheet,
+      itemTemplate,
+      renderInto,
+      cacheTtl
+    ) => {
       this._queryOrGetFromCache(
         `gsh_list_${documentId}_${sheet}_cache`,
         () => this._fetchSheetItemsValues(documentId, sheet),
-        12 * 3600 // 12 hours
+        cacheTtl
       ).then((itemsValues) => {
         this._render(
           renderInto ? document.querySelector(renderInto) : this,
