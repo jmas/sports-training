@@ -1,0 +1,5 @@
+{
+  "defaultLayout": "default",
+  "defaultContentReader": "@flat-cms/content-reader-markdown",
+  "defaultViewRenderer": "@flat-cms/view-renderer-mustache"
+}
