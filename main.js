@@ -1,33 +1,3 @@
-const getApiUrl = () => {
-  return document.body.dataset.api;
-};
-
-const formatTableData = ([header, body]) => {
-  return body.map((item) => {
-    return header.reduce((result, name, index) => {
-      result[name] = item[index];
-      return result;
-    }, {});
-  });
-};
-
-const fetchTable = (url, table) => {
-  const newUrl = new URL(url);
-  newUrl.searchParams.set("action", "getTable");
-  newUrl.searchParams.set("table", table);
-  return fetch(newUrl.toString())
-    .then((response) => response.json())
-    .then(formatTableData);
-};
-
-const fetchTrainings = (url) => {
-  return fetchTable(url, "trainings");
-};
-
-const fetchExercises = (url) => {
-  return fetchTable(url, "exercises");
-};
-
 const renderTrainings = ([trainings, exercises]) => {
   const content = trainings
     .map((training) => {
@@ -69,57 +39,24 @@ const renderLoading = () => {
   document.getElementById("trainings").textContent = "Загрузка...";
 };
 
-const readFromCache = (key) => {
-  const { value, expire } = JSON.parse(
-    localStorage[key] || '{ "value": null, "expire": null }'
-  );
-  if (!expire) {
-    return null;
-  }
-  if (new Date().getTime() < expire) {
-    return value;
-  } else {
-    localStorage.removeItem(key);
-  }
-  return null;
-};
-
-const writeToCache = (key, value, ttl = 3600) => {
-  localStorage[key] = JSON.stringify({
-    value,
-    expire: new Date().getTime() + ttl * 1000,
-  });
-  return value;
-};
-
-const queryOrGetFromCache = (key, queryFn, ttl = 3600) => {
-  return new Promise((resolve) => {
-    const cached = readFromCache(key);
-    if (cached) {
-      resolve(cached);
-    } else {
-      Promise.resolve(queryFn())
-        .then((value) => {
-          writeToCache(key, value, ttl);
-          return value;
-        })
-        .then(resolve);
-    }
-  });
-};
-
 const main = () => {
-  const apiUrl = getApiUrl();
-
   renderLoading();
 
-  queryOrGetFromCache(
-    "trainings_exercises_cache",
-    () => Promise.all([fetchTrainings(apiUrl), fetchExercises(apiUrl)]),
-    12 * 3600 // 12 hours
-  )
-    .then(renderTrainings)
-    .catch(renderError);
+  document.getElementById("trainings-exercises-data").addEventListener(
+    "load",
+    (event) => {
+      renderTrainings(event.detail.values);
+    },
+    true
+  );
+
+  document.getElementById("trainings-exercises-data").addEventListener(
+    "error",
+    (event) => {
+      renderError(event.detail.error);
+    },
+    true
+  );
 };
 
 main();

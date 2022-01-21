@@ -21,9 +21,7 @@
       gtag("config", "G-1F30NV27MF");
     </script>
   </head>
-  <body
-    data-api="https://script.google.com/macros/s/AKfycbz1FgV_mGgBb4i3Z1gdsdPd6TYZPrlvvzH1fP61b7yxhT8gXjbPcfnhzUcf8zIxCZCjoQ/exec"
-  >
+  <body>
     <div class="container">
       <h1>Спортивные тренировки</h1>
 
@@ -62,17 +60,34 @@
       </template>
 
       <gsh-list
-        document-id="1PZ33mOE0Td0t88-8ak8OZ4-CxPDZbhTJfak3VbbvFG0"
-        sheet="short_trainings"
+        from-data="#short-trainings-data"
         item-template="#short-trainings-item"
         render-into="#video-list"
-        cache-ttl="43200"
       >
         <div class="video-list" id="video-list"></div>
       </gsh-list>
     </div>
 
+    <script
+      type="text/json"
+      document-id="1PZ33mOE0Td0t88-8ak8OZ4-CxPDZbhTJfak3VbbvFG0"
+      sheet="short_trainings"
+      id="short-trainings-data"
+      is="gsh-data"
+    >
+      []
+    </script>
+    <script
+      type="text/json"
+      document-id="1PZ33mOE0Td0t88-8ak8OZ4-CxPDZbhTJfak3VbbvFG0"
+      sheet="trainings exercises"
+      id="trainings-exercises-data"
+      is="gsh-data"
+    >
+      [[], []]
+    </script>
     <script src="main.js" defer></script>
     <script src="gsh/gsh-list.js" defer></script>
+    <script src="gsh/gsh-data.js" defer></script>
   </body>
 </html>
