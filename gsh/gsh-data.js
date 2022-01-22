@@ -1,8 +1,9 @@
 customElements.define(
   "gsh-data",
-  class extends HTMLScriptElement {
+  class extends HTMLElement {
     constructor() {
       super();
+      this.setAttribute("type", "text/json");
     }
 
     static get observedAttributes() {
@@ -105,6 +106,5 @@ customElements.define(
         })
       );
     };
-  },
-  { extends: "script" }
+  }
 );
