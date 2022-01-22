@@ -1,8 +1,5 @@
-addEventListener("message", (event) => {
-  console.log("message", event);
-  if (event.data === "SKIP_WAITING") {
-    skipWaiting();
-  }
+addEventListener("install", (event) => {
+  skipWaiting();
 });
 
 addEventListener("fetch", (event) => {
