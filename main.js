@@ -1,3 +1,20 @@
+const registerServiceWorker = () => {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register(`/sw.js`, {
+        scope: "/",
+      })
+      .then((registration) => {
+        registration.addEventListener("updatefound", () => {
+          registration.active.postMessage("SKIP_WAITING");
+        });
+      });
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      window.location.reload();
+    });
+  }
+};
+
 const renderTrainings = ([trainings, exercises]) => {
   const content = trainings
     .map((training) => {
@@ -43,9 +60,7 @@ const renderLoading = () => {
   document.getElementById("trainings").textContent = "Загрузка...";
 };
 
-const main = () => {
-  renderLoading();
-
+const addTrainingsExercisesListeners = () => {
   document.getElementById("trainings-exercises-data").addEventListener(
     "load",
     (event) => {
@@ -61,6 +76,12 @@ const main = () => {
     },
     true
   );
+};
+
+const main = () => {
+  renderLoading();
+  addTrainingsExercisesListeners();
+  registerServiceWorker();
 };
 
 main();
