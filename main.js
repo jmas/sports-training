@@ -3,7 +3,7 @@ const renderTrainings = ([trainings, exercises]) => {
     .map((training) => {
       const _exercises = training.exercises.split("\n").map((_exercise) => {
         const [name, sets, time] = _exercise.split(";");
-        const { videoId, start, end } = exercises.find(
+        const { videoId, start, end, bells } = exercises.find(
           (item) => item.name === name
         );
         return {
@@ -13,6 +13,10 @@ const renderTrainings = ([trainings, exercises]) => {
           end: Number(end),
           sets: Number(sets),
           time: Number(time),
+          bells: bells
+            .split(",")
+            .filter(Boolean)
+            .map((value) => Number(value)),
         };
       });
       return `

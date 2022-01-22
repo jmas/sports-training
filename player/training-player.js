@@ -246,6 +246,7 @@ customElements.define(
             videoId: exercises[i].videoId,
             start: exercises[i].start,
             end: exercises[i].end,
+            bells: exercises[i].bells,
           });
           if (j + 1 < exercises[i].sets) {
             training.push({
@@ -284,7 +285,9 @@ customElements.define(
         activeTraining
       );
 
+      const timeOfTraining = training[activeTraining].time;
       const timeLeft = trainingStart - this._time;
+      const timeFromStart = timeOfTraining - timeLeft;
 
       this._setTimer(training[activeTraining].time, timeLeft);
       this._setListActive(training[activeTraining].exercise);
@@ -303,6 +306,13 @@ customElements.define(
       if (training[activeTraining].type === "set") {
         if (timeLeft === training[activeTraining].time) {
           this._resetVideo();
+        }
+
+        if (
+          training[activeTraining].bells.length > 0 &&
+          training[activeTraining].bells.some((bell) => bell === timeFromStart)
+        ) {
+          this._playBell();
         }
 
         this._toggleBreak(false);
