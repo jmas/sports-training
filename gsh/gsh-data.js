@@ -3,7 +3,6 @@ customElements.define(
   class extends HTMLElement {
     constructor() {
       super();
-      this.setAttribute("type", "text/json");
     }
 
     static get observedAttributes() {
