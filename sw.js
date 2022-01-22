@@ -1,4 +1,5 @@
 addEventListener("message", (event) => {
+  console.log("message", event);
   if (event.data === "SKIP_WAITING") {
     skipWaiting();
   }
@@ -25,12 +26,6 @@ addEventListener("fetch", (event) => {
       if (event.request.method === "GET") {
         // This clone() happens before `return networkResponse`
         const clonedResponse = networkResponse.clone();
-        const clonedResponseWithExpire = new Response(networkResponse, {
-          headers: {
-            ...clonedResponse.headers,
-            "x-expire": new Date().getTime() + 12 * 3600 * 1000,
-          },
-        });
 
         event.waitUntil(
           (async () => {
@@ -38,7 +33,7 @@ addEventListener("fetch", (event) => {
 
             // This will be called after `return networkResponse`
             // so make sure you already have the clone!
-            await cache.put(event.request, clonedResponseWithExpire);
+            await cache.put(event.request, clonedResponse);
           })()
         );
       }

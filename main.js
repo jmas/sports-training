@@ -6,6 +6,7 @@ const registerServiceWorker = () => {
       })
       .then((registration) => {
         registration.addEventListener("updatefound", () => {
+          console.log("updatefound");
           registration.active.postMessage("SKIP_WAITING");
         });
       });
