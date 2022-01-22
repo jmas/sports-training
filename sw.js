@@ -1,7 +1,3 @@
-addEventListener("install", (event) => {
-  skipWaiting();
-});
-
 addEventListener("fetch", (event) => {
   event.respondWith(
     (async () => {
