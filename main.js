@@ -1,3 +1,5 @@
+let auth;
+
 const registerServiceWorker = () => {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
@@ -13,6 +15,42 @@ const registerServiceWorker = () => {
       window.location.reload();
     });
   }
+};
+
+const updateAuthStatus = () => {
+  console.log(auth);
+  const profile = auth.currentUser.get().getBasicProfile();
+  console.log("profile=", profile);
+  console.log("profile name=", profile.getName());
+  console.log("profile email=", profile.getEmail());
+};
+
+const registerAuth = () => {
+  if (!gapi) {
+    console.warn("registerAuth() require gapi object!");
+    return;
+  }
+  gapi.load("client", () => {
+    gapi.client
+      .init({
+        apiKey: "AIzaSyA9OlrZ5KxkwEMSba_p61OBr6LF-YkcKTA",
+        clientId:
+          "730132914202-l6dgndu9lf88c4g7u1ot5iiabkmfcln1.apps.googleusercontent.com",
+        scope:
+          "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+      })
+      .then(() => {
+        auth = gapi.auth2.getAuthInstance();
+
+        if (auth) {
+          auth.isSignedIn.listen(updateAuthStatus);
+        }
+      });
+
+    document.getElementById("sign-in").addEventListener("click", () => {
+      auth.signIn();
+    });
+  });
 };
 
 const renderTrainings = ([trainings, exercises]) => {
@@ -81,7 +119,8 @@ const addTrainingsExercisesListeners = () => {
 const main = () => {
   renderLoading();
   addTrainingsExercisesListeners();
-  registerServiceWorker();
+  // registerAuth();
+  // registerServiceWorker();
 };
 
 main();
