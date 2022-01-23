@@ -116,9 +116,28 @@ const addTrainingsExercisesListeners = () => {
   );
 };
 
+const addShortTrainingsClickListener = () => {
+  document.body.addEventListener("click", (event) => {
+    const target = event.target.closest("a");
+    if (target && target.href.startsWith("https://www.youtube.com/watch?v=")) {
+      event.preventDefault();
+      const dialog = document.getElementById("short-trainings-dialog");
+      const [, videoId] = target.href.match(
+        /^https:\/\/www\.youtube\.com\/watch\?v=(.+?)$/
+      );
+      dialog.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      dialog.open = true;
+    } else if (!event.target.closest("dialog")) {
+      const dialog = document.getElementById("short-trainings-dialog");
+      dialog.open = false;
+    }
+  });
+};
+
 const main = () => {
   renderLoading();
   addTrainingsExercisesListeners();
+  addShortTrainingsClickListener();
   // registerAuth();
   // registerServiceWorker();
 };
