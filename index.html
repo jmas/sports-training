@@ -73,16 +73,7 @@
       <h2>Утренние короткие зарядки</h2>
 
       <template id="short-trainings-item">
-        <a
-          data-insert-href="https://www.youtube.com/watch?v=${videoId}"
-          target="_blank"
-        >
-          <img
-            data-insert-src="https://img.youtube.com/vi/${videoId}/0.jpg"
-            data-insert-alt="${name}"
-          />
-          <span data-insert="${name}"></span>
-        </a>
+        <yt-video data-insert-video-id="${videoId}"></yt-video>
       </template>
 
       <gsh-list
@@ -115,5 +106,6 @@
     <script src="main.js" defer></script>
     <script src="gsh/gsh-list.js" defer></script>
     <script src="gsh/gsh-data.js" defer></script>
+    <script src="yt-video/yt-video.js" defer></script>
   </body>
 </html>
