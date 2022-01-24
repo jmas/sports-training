@@ -129,6 +129,7 @@ const addShortTrainingsClickListener = () => {
       dialog.open = true;
     } else if (!event.target.closest("dialog")) {
       const dialog = document.getElementById("short-trainings-dialog");
+      dialog.textContent = "";
       dialog.open = false;
     }
   });
