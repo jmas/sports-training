@@ -71,20 +71,34 @@
 
       <h2>Утренние короткие зарядки</h2>
 
-      <template id="short-trainings-item">
-        <yt-video data-insert-video-id="${videoId}"></yt-video>
-      </template>
-
       <gsh-list
         from-data="#short-trainings-data"
         item-template="#short-trainings-item"
-        render-into="#video-list"
+        render-into="#short-trainings-video-list"
       >
-        <div class="video-list" id="video-list"></div>
+        <div class="video-list" id="short-trainings-video-list"></div>
+      </gsh-list>
+
+      <h2>Спортивные упражнения</h2>
+
+      <gsh-list
+        from-data="#exercises-data"
+        item-template="#exercises-item"
+        render-into="#exercises-video-list"
+      >
+        <div class="video-list" id="exercises-video-list"></div>
       </gsh-list>
     </div>
 
     <dialog id="short-trainings-dialog"></dialog>
+
+    <template id="short-trainings-item">
+      <yt-video data-insert-video-id="${videoId}"></yt-video>
+    </template>
+
+    <template id="exercises-item">
+      <yt-video data-insert-video-id="${videoId}"></yt-video>
+    </template>
 
     <gsh-data
       document-id="1PZ33mOE0Td0t88-8ak8OZ4-CxPDZbhTJfak3VbbvFG0"
@@ -101,6 +115,14 @@
       hidden
     >
       [[], []]
+    </gsh-data>
+    <gsh-data
+      document-id="1PZ33mOE0Td0t88-8ak8OZ4-CxPDZbhTJfak3VbbvFG0"
+      sheet="exercises"
+      id="exercises-data"
+      hidden
+    >
+      []
     </gsh-data>
 
     <!-- <script src="https://apis.google.com/js/api.js" defer></script> -->
