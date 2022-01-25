@@ -105,11 +105,21 @@ footer {
   margin-inline: auto;
 }
 
+.trainings:empty::before {
+  display: block;
+  content: "Пока ничего нет...";
+}
+
 .video-list {
   display: grid;
   gap: 1.5rem 1rem;
   grid-template-columns: 1fr;
   font-size: 80%;
+}
+
+.video-list:empty::before {
+  display: block;
+  content: "Пока ничего нет...";
 }
 
 @media (min-width: 641px) {

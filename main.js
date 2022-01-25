@@ -94,10 +94,6 @@ const renderError = (error) => {
   document.getElementById("trainings").textContent = "Произошла ошибка.";
 };
 
-const renderLoading = () => {
-  document.getElementById("trainings").textContent = "Загрузка...";
-};
-
 const addTrainingsExercisesListeners = () => {
   document.getElementById("trainings-exercises-data").addEventListener(
     "load",
@@ -140,7 +136,6 @@ const addVideoClickListener = () => {
 };
 
 const main = () => {
-  renderLoading();
   addTrainingsExercisesListeners();
   addVideoClickListener();
   // registerAuth();
