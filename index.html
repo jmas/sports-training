@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Спортивные тренировки</title>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
+
     <!-- Favicon -->
     <link
       rel="apple-touch-icon"
@@ -32,6 +35,7 @@
     />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
+
     <!-- Description -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="og:site_name" content="sports-training.pp.ua" />
@@ -60,6 +64,7 @@
     <meta name="language" content="RU" />
     <meta name="google-analytics" content="G-1F30NV27MF" />
     <link rel="me" type="text/html" href="https://github.com/jmas" />
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
@@ -73,6 +78,7 @@
       gtag("js", new Date());
       gtag("config", "G-1F30NV27MF");
     </script>
+
     <!-- OEmbed -->
     <link
       rel="alternate"
@@ -153,14 +159,15 @@
 
     <dialog id="short-trainings-dialog"></dialog>
 
+    <!-- Templates -->
     <template id="short-trainings-item">
       <yt-video data-insert-video-id="${videoId}"></yt-video>
     </template>
-
     <template id="exercises-item">
       <yt-video data-insert-video-id="${videoId}"></yt-video>
     </template>
 
+    <!-- Data -->
     <gsh-data
       document-id="1PZ33mOE0Td0t88-8ak8OZ4-CxPDZbhTJfak3VbbvFG0"
       sheet="short_trainings"
@@ -188,6 +195,7 @@
 
     <!-- Vendors -->
     <!-- <script src="https://apis.google.com/js/api.js" defer></script> -->
+
     <!-- Scripts -->
     <script src="main.js" defer></script>
     <script src="gsh/gsh-list.js" defer></script>
