@@ -114,7 +114,7 @@ const addTrainingsExercisesListeners = () => {
 
 const addVideoClickListener = () => {
   // Check that browser supports dialog element
-  if (!(typeof HTMLDialogElement === "function")) {
+  if (!("open" in document.createElement("dialog"))) {
     return;
   }
   document.body.addEventListener("click", (event) => {
