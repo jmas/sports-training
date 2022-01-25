@@ -47,48 +47,67 @@
     </script>
   </head>
   <body>
-    <div class="container">
-      <h1>Спортивные тренировки</h1>
+    <header>
+      <div class="container">
+        <img
+          src="assets/sports-training.png"
+          alt="Спортивные тренировки"
+          width="100"
+        />
+      </div>
+    </header>
 
-      <p>
-        Это сайт на котором я собираю фитнес-тренировки для занятий дома.
-        Тренировка отображается в плеере, который уведомляет о начале
-        упражнения, длительности и перерывах, а так же главное &mdash;
-        показывает видео с примером выполнения упражнения. Можно ставить
-        выполнение упражнения на паузу. Все это оказалось удобным для ежедневных
-        занятий спортом. Если вы нашли этот сайт полезным для себя и хотите
-        добавить тренировку &mdash; пишите на
-        <a href="mailto:hi.webuis@gmail.com?subject=Новая тренировка"
-          >hi.webuis@gmail.com</a
-        >.
-      </p>
+    <main>
+      <div class="container">
+        <h1>Спортивные тренировки</h1>
 
-      <p>Включайте любимую музыку и присоединяйтесь к занятиям спортом!</p>
+        <p>
+          Это сайт на котором я собираю фитнес-тренировки для занятий дома.
+          Тренировка отображается в плеере, который уведомляет о начале
+          упражнения, длительности и перерывах, а так же главное &mdash;
+          показывает видео с примером выполнения упражнения. Можно ставить
+          выполнение упражнения на паузу. Все это оказалось удобным для
+          ежедневных занятий спортом. Если вы нашли этот сайт полезным для себя
+          и хотите добавить тренировку &mdash; пишите на
+          <a href="mailto:hi.webuis@gmail.com?subject=Новая тренировка"
+            >hi.webuis@gmail.com</a
+          >.
+        </p>
 
-      <h2>Список тренировок</h2>
+        <p>Включайте любимую музыку и присоединяйтесь к занятиям спортом!</p>
 
-      <div id="trainings"></div>
+        <h2>Список тренировок</h2>
 
-      <h2>Утренние короткие зарядки</h2>
+        <div id="trainings"></div>
 
-      <gsh-list
-        from-data="#short-trainings-data"
-        item-template="#short-trainings-item"
-        render-into="#short-trainings-video-list"
-      >
-        <div class="video-list" id="short-trainings-video-list"></div>
-      </gsh-list>
+        <h2>Утренние короткие зарядки</h2>
 
-      <h2>Спортивные упражнения</h2>
+        <gsh-list
+          from-data="#short-trainings-data"
+          item-template="#short-trainings-item"
+          render-into="#short-trainings-video-list"
+        >
+          <div class="video-list" id="short-trainings-video-list"></div>
+        </gsh-list>
 
-      <gsh-list
-        from-data="#exercises-data"
-        item-template="#exercises-item"
-        render-into="#exercises-video-list"
-      >
-        <div class="video-list" id="exercises-video-list"></div>
-      </gsh-list>
-    </div>
+        <h2>Спортивные упражнения</h2>
+
+        <gsh-list
+          from-data="#exercises-data"
+          item-template="#exercises-item"
+          render-into="#exercises-video-list"
+        >
+          <div class="video-list" id="exercises-video-list"></div>
+        </gsh-list>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        Разработка и поддержка
+        <a href="https://jmas.github.io/webuis/" rel="nofollow">WebUI’s</a>
+      </div>
+    </footer>
 
     <dialog id="short-trainings-dialog"></dialog>
 

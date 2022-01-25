@@ -34,7 +34,6 @@ iframe {
 }
 
 img {
-  display: block;
   max-width: 100%;
 }
 
@@ -63,6 +62,22 @@ dialog {
   margin: auto;
   border: 2px solid rgba(0, 0, 0, 0.5);
   border-radius: 0.5rem;
+}
+
+header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1rem 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+footer {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1rem 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .container {
