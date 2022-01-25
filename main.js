@@ -116,7 +116,11 @@ const addTrainingsExercisesListeners = () => {
   );
 };
 
-const addShortTrainingsClickListener = () => {
+const addVideoClickListener = () => {
+  // Check that browser supports dialog element
+  if (!(typeof HTMLDialogElement === "function")) {
+    return;
+  }
   document.body.addEventListener("click", (event) => {
     const target = event.target.closest("a");
     if (target && target.href.startsWith("https://www.youtube.com/watch?v=")) {
@@ -138,7 +142,7 @@ const addShortTrainingsClickListener = () => {
 const main = () => {
   renderLoading();
   addTrainingsExercisesListeners();
-  addShortTrainingsClickListener();
+  addVideoClickListener();
   // registerAuth();
   // registerServiceWorker();
 };
