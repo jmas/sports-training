@@ -23,6 +23,7 @@ customElements.define(
           font-size: inherit;
           text-align: left;
           cursor: pointer;
+          margin: 0;
         }
 
         .list > button > * {

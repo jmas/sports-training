@@ -1,6 +1,6 @@
 :root {
-  --link: #3474d6;
-  --link-hover: #2158ab;
+  --link: 52, 116, 214;
+  --link-hover: 33, 88, 171;
 }
 
 * {
@@ -21,14 +21,14 @@
 }
 
 a {
-  color: var(--link);
+  color: rgb(var(--link));
   text-decoration: none;
   transition: 0.3s;
   transition-property: color;
 }
 
 a:hover {
-  color: var(--link-hover);
+  color: rgb(var(--link-hover));
 }
 
 body {
@@ -52,24 +52,32 @@ details {
   margin: 1rem auto;
   background: #fff;
   border-radius: 0.5rem;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgba(var(--link), 0.025);
   user-select: none;
 }
 
 summary {
   padding: 1rem;
+  border-radius: 0.5rem;
   background: #fff;
   position: relative;
   cursor: pointer;
-  color: var(--link);
+  color: rgb(var(--link));
+  background-color: transparent;
   transition: 0.3s;
-  transition-property: color;
-  background-color: rgba(0, 0, 0, 0.015);
+  transition-property: color, outline;
+  outline: 1px solid rgba(var(--link), 0);
+  outline-offset: -1px;
 }
 
+details[open] summary {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+summary:focus,
 summary:hover {
-  color: var(--link-hover);
+  color: rgb(var(--link-hover));
+  outline: 1px solid rgba(var(--link), 0.25);
 }
 
 dialog[open] {
@@ -119,6 +127,19 @@ footer {
 
 .video-list a {
   display: block;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  background-color: rgba(var(--link), 0.025);
+  transition-property: color, outline;
+  outline: 1px solid rgba(var(--link), 0);
+  outline-offset: -1px;
+}
+
+.video-list a:hover,
+.video-list a:focus {
+  color: rgb(var(--link-hover));
+  outline: 1px solid rgba(var(--link), 0.25);
 }
 
 .video-list:empty::before {

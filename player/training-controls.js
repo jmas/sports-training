@@ -32,6 +32,7 @@ customElements.define(
           border: none;
           background: transparent;
           cursor: pointer;
+          margin: 0;
         }
 
         .controls > div:nth-child(2) {
