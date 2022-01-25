@@ -54,6 +54,7 @@ details {
   border-radius: 0.5rem;
   background-color: rgba(var(--link), 0.025);
   user-select: none;
+  overflow: hidden;
 }
 
 summary {
