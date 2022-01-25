@@ -72,7 +72,7 @@ summary:hover {
   color: var(--link-hover);
 }
 
-dialog {
+dialog[open] {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -115,6 +115,10 @@ footer {
   gap: 1.5rem 1rem;
   grid-template-columns: 1fr;
   font-size: 80%;
+}
+
+.video-list a {
+  display: block;
 }
 
 .video-list:empty::before {
