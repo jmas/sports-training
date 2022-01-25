@@ -16,7 +16,6 @@ customElements.define(
           align-items: stretch;
           color: #fff;
           text-decoration: none;
-          white-space: nowrap;
           background-clip: padding-box;
           background-color: transparent;
           font-family: inherit;
@@ -47,6 +46,7 @@ customElements.define(
           height: 30px;
           line-height: 30px;
           text-align: center;
+          flex-shrink: 0;
         }
 
         .list > button > span:nth-child(2) {
@@ -58,6 +58,7 @@ customElements.define(
         .list > button > span:last-child {
           margin-right: 0;
           text-align: right;
+          white-space: nowrap;
         }
         </style>
         <div class="list" id="list"></div>

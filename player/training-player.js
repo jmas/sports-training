@@ -16,6 +16,12 @@ customElements.define(
           display: grid;
         }
 
+        .container > * {
+          width: 100%;
+          display: block;
+          overflow: hidden;
+        }
+
         .player {
           position: relative;
         }
@@ -47,6 +53,7 @@ customElements.define(
           position: absolute;
           top: 10px;
           left: 10px;
+          max-width: 70%;
           background-color: #444444;
           border-radius: 10px;
           font-size: 130%;

@@ -11,12 +11,14 @@ customElements.define(
           line-height: 30px;
           display: flex;
           align-items: stretch;
+          justify-content: space-between;
           color: #fff;
           text-decoration: none;
           white-space: nowrap;
           background-clip: padding-box;
           background-color: rgba(0, 0, 0, 0.5);
           font-weight: bold;
+          max-width: 100%;
         }
 
         .controls > div {
