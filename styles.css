@@ -119,58 +119,80 @@ footer {
   content: "Пока ничего нет...";
 }
 
-.video-list {
+.videos-list {
   display: grid;
   gap: 1.5rem 1rem;
   grid-template-columns: 1fr;
   font-size: 80%;
 }
 
-.video-list a {
+.videos-list a {
   display: block;
   padding: 0.5rem;
   border-radius: 0.5rem;
   transition: 0.3s;
+  transition-property: color, box-shadow;
   background-color: rgba(var(--link), 0.025);
-  transition-property: color, outline;
-  outline: 1px solid rgba(var(--link), 0);
-  outline-offset: -1px;
+  box-shadow: 0 0 0 1px rgba(var(--link), 0.025) inset;
+  user-select: none;
 }
 
-.video-list a:hover,
-.video-list a:focus {
+.videos-list a:hover,
+.videos-list a:focus {
   color: rgb(var(--link-hover));
-  outline: 1px solid rgba(var(--link), 0.25);
-}
-
-.video-list:empty::before {
-  display: block;
-  content: "Пока ничего нет...";
+  box-shadow: 0 0 0 1px rgba(var(--link), 0.25) inset;
 }
 
 @media (min-width: 641px) {
-  .video-list {
+  .videos-list {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-.video-list img {
+.videos-list a > span:nth-child(1) {
   display: block;
   width: 100%;
-  margin-bottom: 0.25rem;
-  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
   background-color: rgba(0, 0, 0, 0.1);
-  aspect-ratio: 16/8.8;
-  object-fit: cover;
-  outline: 1px solid rgba(0, 0, 0, 0.05);
-  outline-offset: -1px;
+  padding-bottom: 56%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+  border-radius: 0.25rem;
 }
 
-.video-list a span {
+.videos-list a > span:nth-child(1) > img {
+  display: none;
+}
+
+.videos-list a > span:nth-child(2) {
+  display: flex;
+  align-items: flex-start;
+}
+
+.videos-list a > span:nth-child(2) > span:nth-child(1) {
+  flex-shrink: 0;
   display: block;
-  text-transform: lowercase;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
 }
 
-.video-list a span::first-letter {
-  text-transform: uppercase;
+.videos-list a > span:nth-child(2) > span:nth-child(2) {
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.videos-list .placeholder {
+  display: block;
+  aspect-ratio: 16/8.8;
+  background-color: rgba(0, 0, 0, 0.015);
 }
